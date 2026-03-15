@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosani Jicamarca</title>
+    <link rel="icon" type="image/png" href="hosani.png">
+    <!-- Tailwind CSS para el diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        vet: {
+                            light: '#ccf5f0', /* Turquesa muy claro */
+                            main: '#00cbb4',  /* Color principal de Hosani */
+                            dark: '#009b8a',  /* Turquesa oscuro */
+                            accent: '#f59e0b' /* Mantengo un amarillo para contrastar y destacar */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Clases para la animación de revelado tipo presentación */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Efecto parallax suave para el hero */
+        .bg-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased font-sans">
+
+    <!-- Navegación Fija -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <img src="hosani.png" alt="Logo Hosani" class="w-12 h-12 rounded-full object-cover border-2 border-vet-main shadow-sm group-hover:scale-105 transition duration-300">
+                    <span class="font-bold text-2xl text-gray-900 tracking-tight">Hosani</span>
+                </a>
+                
+                <!-- Enlaces Desktop -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-gray-600 hover:text-vet-main font-medium transition">Inicio</a>
+                    <a href="#anuncios" class="text-gray-600 hover:text-vet-main font-medium transition">Anuncios</a>
+                    <a href="#servicios" class="text-gray-600 hover:text-vet-main font-medium transition">Servicios</a>
+                    <a href="#nosotros" class="text-gray-600 hover:text-vet-main font-medium transition">Nosotros</a>
+                    <a href="#contacto" class="bg-vet-main text-white px-5 py-2 rounded-full hover:bg-vet-dark font-medium transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Reservar Cita</a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-vet-main focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3 text-center">
+                <a href="#inicio" class="block px-3 py-2 text-gray-700 hover:bg-vet-light hover:text-vet-main rounded-md">Inicio</a>
+                <a href="#anuncios" class="block px-3 py-2 text-gray-700 hover:bg-vet-light hover:text-vet-main rounded-md">Anuncios</a>
+                <a href="#servicios" class="block px-3 py-2 text-gray-700 hover:bg-vet-light hover:text-vet-main rounded-md">Servicios</a>
+                <a href="#nosotros" class="block px-3 py-2 text-gray-700 hover:bg-vet-light hover:text-vet-main rounded-md">Nosotros</a>
+                <a href="#contacto" class="block px-3 py-2 mt-4 bg-vet-main text-white rounded-md mx-4">Reservar Cita</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. SECCIÓN INICIO (Hero Slide) -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center bg-hero">
+        <div class="text-center px-4 max-w-4xl mx-auto reveal mt-16">
+            <span class="block text-vet-accent font-bold tracking-wider uppercase mb-4 text-sm md:text-base">Tu mascota en las mejores manos</span>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                Cuidamos de ellos <br> <span class="text-vet-light">como si fueran nuestros</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md">
+                Atención veterinaria de primer nivel, emergencias 24/7 y todo el amor que tu mejor amigo merece.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#anuncios" class="bg-white text-vet-dark px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg flex items-center justify-center gap-2">
+                    Ver Promociones <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#contacto" class="bg-vet-accent text-white px-8 py-3 rounded-full font-semibold hover:bg-yellow-600 transition shadow-lg flex items-center justify-center gap-2">
+                    Urgencias 24h <i data-lucide="phone" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Indicador de Scroll -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#anuncios" class="text-white opacity-80 hover:opacity-100">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 1.5 SECCIÓN ANUNCIOS (NUEVO CARRUSEL) -->
+    <section id="anuncios" class="py-24 bg-gray-50 flex flex-col justify-center overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-sm font-bold text-vet-main tracking-widest uppercase mb-2">Novedades</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Anuncios y Promociones</h3>
+                <div class="w-24 h-1 bg-vet-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Contenedor del Carrusel -->
+            <div class="relative max-w-4xl mx-auto reveal group">
+                <!-- Visor -->
+                <div class="overflow-hidden rounded-3xl shadow-2xl bg-white border-4 border-white relative h-[450px] md:h-[600px]">
+                    <div id="carousel-track" class="flex transition-transform duration-700 ease-in-out h-full w-full">
+                        <!-- Imágenes de anuncios -->
+                        <img src="gatoe.jpg" class="w-full h-full object-contain shrink-0" alt="Esterilización Felina">
+                        <img src="allimentos.jpg" class="w-full h-full object-contain shrink-0" alt="Alimentos y Accesorios">
+                        <img src="hospedaje.jpg" class="w-full h-full object-contain shrink-0" alt="Hospedaje Canino">
+                        <img src="baños.jpg" class="w-full h-full object-contain shrink-0" alt="Baños Especializados">
+                        <img src="gatito.jpg" class="w-full h-full object-contain shrink-0" alt="Vacunación Gatos">
+                    </div>
+                </div>
+
+                <!-- Controles -->
+                <button id="prev-btn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white text-vet-main p-3 md:p-4 rounded-full shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-110 hover:bg-vet-main hover:text-white transition-all z-10 opacity-0 group-hover:opacity-100 focus:outline-none">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button id="next-btn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white text-vet-main p-3 md:p-4 rounded-full shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:scale-110 hover:bg-vet-main hover:text-white transition-all z-10 opacity-0 group-hover:opacity-100 focus:outline-none">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+                
+                <!-- Puntos (Dots) generados automáticamente por JS -->
+                <div id="carousel-dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-10 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SECCIÓN SERVICIOS -->
+    <section id="servicios" class="py-24 bg-white min-h-screen flex flex-col justify-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-vet-main tracking-widest uppercase mb-2">Especialidades</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Todo para su Bienestar</h3>
+                <div class="w-24 h-1 bg-vet-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tarjeta Servicio 1 -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal group">
+                    <div class="w-14 h-14 bg-vet-light rounded-2xl flex items-center justify-center text-vet-main mb-6 group-hover:bg-vet-main group-hover:text-white transition">
+                        <i data-lucide="stethoscope" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Consulta General</h4>
+                    <p class="text-gray-600 leading-relaxed">Chequeos preventivos, diagnósticos y tratamiento de enfermedades comunes para mantener a tu mascota sana.</p>
+                </div>
+
+                <!-- Tarjeta Servicio 2 -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal group" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-vet-light rounded-2xl flex items-center justify-center text-vet-main mb-6 group-hover:bg-vet-main group-hover:text-white transition">
+                        <i data-lucide="syringe" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Vacunación</h4>
+                    <p class="text-gray-600 leading-relaxed">Esquemas completos de vacunación y desparasitación adaptados a la edad y estilo de vida de tu peludo.</p>
+                </div>
+
+                <!-- Tarjeta Servicio 3 -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal group" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-vet-light rounded-2xl flex items-center justify-center text-vet-main mb-6 group-hover:bg-vet-main group-hover:text-white transition">
+                        <i data-lucide="scissors" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Peluquería y Spa</h4>
+                    <p class="text-gray-600 leading-relaxed">Baños medicados, cortes de raza, limpieza de oídos y corte de uñas. ¡Saldrán luciendo increíbles!</p>
+                </div>
+
+                <!-- Tarjeta Servicio 4 -->
+
+                <!-- Tarjeta Servicio 5 -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal group" style="transition-delay: 400ms;">
+                    <div class="w-14 h-14 bg-vet-light rounded-2xl flex items-center justify-center text-vet-main mb-6 group-hover:bg-vet-main group-hover:text-white transition">
+                        <i data-lucide="bone" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Nutrición</h4>
+                    <p class="text-gray-600 leading-relaxed">Asesoramiento dietético especializado y venta de alimentos premium y medicados para necesidades específicas.</p>
+                </div>
+
+                <!-- Tarjeta Servicio 6 -->
+                <div class="bg-vet-main rounded-2xl p-8 text-white hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal flex flex-col justify-center items-center text-center" style="transition-delay: 500ms;">
+                    <h4 class="text-2xl font-bold mb-4">¿Emergencia?</h4>
+                    <p class="text-vet-light mb-6">Contamos con personal médico las 24 horas del día, los 7 días de la semana.</p>
+                    <a href="tel:+123456789" class="bg-white text-vet-main px-6 py-2 rounded-full font-bold w-full hover:bg-gray-100 transition">
+                        Llamar Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SECCIÓN NOSOTROS -->
+    <section id="nosotros" class="py-24 bg-vet-light/30 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Imagen -->
+                <div class="lg:w-1/2 reveal relative">
+                    <div class="absolute -inset-4 bg-vet-main/20 rounded-3xl transform rotate-3"></div>
+                    <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=800&q=80" alt="Veterinaria examinando un perro" class="relative rounded-3xl shadow-2xl object-cover h-[500px] w-full">
+                    
+                    <!-- Badge flotante -->
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+                        <div class="bg-green-100 text-green-600 p-3 rounded-full">
+                            <i data-lucide="award" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-gray-900">+15</p>
+                            <p class="text-sm text-gray-500 font-medium">Años de experiencia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido -->
+                <div class="lg:w-1/2 reveal">
+                    <h2 class="text-sm font-bold text-vet-main tracking-widest uppercase mb-2">Nuestra Historia</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Vocación por la vida animal</h3>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        En <strong>Hosani</strong>, no solo tratamos enfermedades, cuidamos miembros de la familia. Nuestro equipo está compuesto por especialistas altamente capacitados que comparten una pasión inquebrantable por los animales.
+                    </p>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        Nuestras instalaciones están diseñadas para minimizar el estrés de tu mascota, creando un ambiente amigable y seguro desde el momento en que cruzan nuestra puerta.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i data-lucide="check-circle-2" class="text-vet-main w-6 h-6"></i> Profesionales certificados.
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i data-lucide="check-circle-2" class="text-vet-main w-6 h-6"></i> Equipamiento de última tecnología.
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <i data-lucide="check-circle-2" class="text-vet-main w-6 h-6"></i> Trato humanizado y empático ("Fear Free").
+                        </li>
+                    </ul>
+
+                    <a href="#contacto" class="inline-flex items-center gap-2 bg-vet-dark text-white px-8 py-3 rounded-full font-semibold hover:bg-vet-main transition">
+                        Conoce al Equipo <i data-lucide="users" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN CONTACTO Y CITAS -->
+    <section id="contacto" class="py-24 bg-white min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="bg-vet-dark rounded-3xl overflow-hidden shadow-2xl reveal">
+                <div class="flex flex-col lg:flex-row">
+                    
+                    <!-- Información de Contacto -->
+                    <div class="lg:w-2/5 bg-vet-main p-10 md:p-12 text-white flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-2">Estamos aquí para ayudarte</h3>
+                            <p class="text-vet-light mb-10">Ponte en contacto con nosotros para agendar una cita o resolver tus dudas.</p>
+                            
+                            <div class="space-y-8">
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-white/20 p-3 rounded-full">
+                                        <i data-lucide="map-pin" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Visítanos</h4>
+                                        <p class="text-vet-light">Av. 8 agosto,<br>Manzana B, Lote 7</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-white/20 p-3 rounded-full">
+                                        <i data-lucide="phone-call" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Llámanos</h4>
+                                        <p class="text-vet-light">+51 946 526 440</p>
+                                        <p class="text-vet-light text-sm">(Emergencias 24h: 946 526 440)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-white/20 p-3 rounded-full">
+                                        <i data-lucide="clock" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Horario de Consultas</h4>
+                                        <p class="text-vet-light">Toda la semana: 8am - 7pm</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12 flex gap-4">
+                            <a href="#" class="bg-white/10 p-3 rounded-full hover:bg-white/30 transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                            <a href="#" class="bg-white/10 p-3 rounded-full hover:bg-white/30 transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                            <a href="#" class="bg-white/10 p-3 rounded-full hover:bg-white/30 transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Formulario -->
+                    <div class="lg:w-3/5 p-10 md:p-12 bg-white">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Solicitar Cita en Línea</h3>
+                        
+                        <form onsubmit="event.preventDefault(); alert('¡Gracias! Tu solicitud de cita ha sido enviada. Nos comunicaremos contigo pronto.');" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Tu Nombre</label>
+                                    <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-vet-main focus:border-vet-main outline-none transition bg-gray-50">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
+                                    <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-vet-main focus:border-vet-main outline-none transition bg-gray-50">
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nombre de tu Mascota</label>
+                                    <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-vet-main focus:border-vet-main outline-none transition bg-gray-50">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Mascota</label>
+                                    <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-vet-main focus:border-vet-main outline-none transition bg-gray-50">
+                                        <option>Perro</option>
+                                        <option>Gato</option>
+                                        <option>Ave</option>
+                                        <option>Exótico / Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Motivo de la consulta</label>
+                                <textarea rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-vet-main focus:border-vet-main outline-none transition bg-gray-50 placeholder-gray-400" placeholder="Ej: Chequeo anual, vacunas, malestar..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-vet-main text-white py-4 rounded-xl font-bold text-lg hover:bg-vet-dark transition shadow-lg flex justify-center items-center gap-2">
+                                Enviar Solicitud <i data-lucide="send" class="w-5 h-5"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 border-t border-gray-800 text-center">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <img src="hosani.jpg" alt="Logo Hosani" class="w-8 h-8 rounded-full object-cover grayscale opacity-70">
+                <span class="font-bold text-white tracking-tight text-xl">Hosani</span>
+            </div>
+            <p class="text-sm">© 2026 Clínica Veterinaria Hosani. Todos los derechos reservados.</p>
+            <div class="flex gap-4 text-sm">
+                <a href="#" class="hover:text-white transition">Privacidad</a>
+                <a href="#" class="hover:text-white transition">Términos</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts de interactividad -->
+    <script>
+        // Inicializar iconos de Lucide
+        lucide.createIcons();
+
+        // Lógica del menú móvil
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Efecto Navbar al hacer scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('bg-white/90', 'bg-white/95');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('bg-white/95', 'bg-white/90');
+            }
+        });
+
+        // Animación de aparición (Scroll Reveal) al estilo presentación
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150; // Punto donde aparece
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        // Event listener para scroll
+        window.addEventListener("scroll", reveal);
+        // Llamado inicial para elementos ya visibles al cargar
+        reveal();
+
+        // --------------------------------------------------------
+        // Lógica del Carrusel de Anuncios
+        // --------------------------------------------------------
+        const track = document.getElementById('carousel-track');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const dotsContainer = document.getElementById('carousel-dots');
+        
+        if (track) {
+            const slides = track.children;
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+            let slideInterval;
+
+            // 1. Crear los puntos indicadores dinámicamente
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-vet-main w-6' : 'bg-gray-400 hover:bg-gray-500'}`;
+                dot.setAttribute('aria-label', `Ir a anuncio ${i + 1}`);
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                    resetInterval();
+                });
+                dotsContainer.appendChild(dot);
+            }
+
+            const dots = dotsContainer.children;
+
+            // 2. Función para mover el carrusel
+            function updateSlider() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Actualizar estilo de los puntos
+                Array.from(dots).forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.remove('bg-gray-400', 'hover:bg-gray-500');
+                        dot.classList.add('bg-vet-main', 'w-6');
+                    } else {
+                        dot.classList.remove('bg-vet-main', 'w-6');
+                        dot.classList.add('bg-gray-400', 'hover:bg-gray-500');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updateSlider();
+            }
+
+            // 3. Eventos de los botones laterales
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetInterval();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetInterval();
+            });
+
+            // 4. Temporizador para que pase automáticamente cada 4 segundos
+            function startInterval() {
+                slideInterval = setInterval(nextSlide, 4000);
+            }
+
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startInterval();
+            }
+
+            // Pausar el carrusel si el usuario coloca el ratón encima de la imagen
+            track.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            track.addEventListener('mouseleave', startInterval);
+
+            // Iniciar movimiento automático
+            startInterval();
+        }
+    </script>
+</body>
+</html>
